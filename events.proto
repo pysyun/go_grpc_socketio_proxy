@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package events;
+
+service Stream {
+    rpc Connect(stream Message) returns (stream Message){}
+}
+
+message Message {
+    string event = 1;
+    string data = 2;
+}
