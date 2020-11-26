@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-    conn, err := grpc.Dial("localhost:8081", grpc.WithInsecure())
+    conn, err := grpc.Dial("34.239.11.167:84", grpc.WithInsecure())
     if err != nil {
         log.Fatalf("failed to connect: %s", err)
     }
@@ -19,11 +19,9 @@ func main() {
     client := events.NewStreamClient(conn)
     stream, err := client.Connect(context.Background())
 
-    jsonData := events.ToJSON("434534")
-
     waitc := make(chan struct{})
     // Message - ./events/events.pb.go
-    msg := &events.Message{Event: "Some event", Data: string(jsonData)}
+    msg := &events.Message{Event: "publish", Data: string("{\"channel\":\"))\",\"message\":\"::))\"}")}
 
     go func() {
         for i := 0; i < 3; i++ {

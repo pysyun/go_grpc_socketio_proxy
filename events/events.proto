@@ -3,7 +3,7 @@ syntax = "proto3";
 package events;
 
 service Stream {
-    rpc Connect(stream Message) returns (stream Message){}
+    rpc connect(stream Message) returns (stream Message){}
 }
 
 message Message {
